@@ -1,0 +1,39 @@
+#!/usr/bin/env node
+
+const program = require ("commander")
+
+program
+    .version(require('../package').version )
+
+
+// 定义使用方法
+program
+    .usage('<command>')
+
+program
+    .command('ls')
+    .description('可下载的所用模板')
+  .action(() => {
+   require("../command/ls.js")
+  })
+
+program
+    .command('ls_git')
+    .description('查看所用模板git地址')
+  .action(() => {
+   require("../command/ls_git.js")
+  })
+
+program.command('use <template>')
+       .description('使用template模板，例如使用React-BBW模板 longrise use React-BBW')
+       .action(template => {
+       let use = require("../command/use.js")
+       use.template(template)
+       })
+
+
+program.parse(process.argv)
+
+if(!program.args.length){
+  program.help()
+}

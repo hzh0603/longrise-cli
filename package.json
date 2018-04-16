@@ -1,0 +1,23 @@
+{
+  "name": "longrise-cli",
+  "version": "1.0.5",
+  "description": "longrise脚手架编写",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "longrise": "bin/longrise"
+  },
+  "keywords": [
+    "longrise"
+  ],
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "co": "^4.6.0",
+    "co-prompt": "^1.0.0",
+    "commander": "^2.9.0"
+  },
+  "author": "huzh@longrise.com.cn",
+  "license": "ISC"
+}
