@@ -1,38 +1,52 @@
 #!/usr/bin/env node
 
-const program = require ("commander")
+const program = require ("commander");
 
 program
-    .version(require('../package').version )
+    .version(require('../package').version );
 
 
 // 定义使用方法
 program
-    .usage('<command>')
+    .usage('<command>');
 
+// 查看所有可下载模板
 program
     .command('ls')
-    .description('可下载的所用模板')
+    .description('可下载的所有模板')
   .action(() => {
    require("../command/ls.js")
-  })
+  });
 
+// 查看所有模板git地址
 program
     .command('ls_git')
-    .description('查看所用模板git地址')
+    .description('查看所有模板git地址')
   .action(() => {
    require("../command/ls_git.js")
-  })
+  });
 
+// 新增模板地址
+program.command('add').description('新增模板').action(() => {
+    let use = require("../command/add");
+    use.addTemplate()
+});
+
+
+// 使用指定的模板
 program.command('use <template>')
-       .description('使用template模板，例如使用React-BBW模板 longrise use React-BBW')
+       .description('使用模板，longrise use <template name>')
        .action(template => {
-       let use = require("../command/use.js")
+       let use = require("../command/use.js");
        use.template(template)
-       })
+       });
 
-
-program.parse(process.argv)
+// 删除指定模板
+program.command('delete <name>').description(`删除指定的模板`).action(name => {
+    let use = require("../command/delete.js");
+    use.deleteTemplate(name)
+})
+program.parse(process.argv);
 
 if(!program.args.length){
   program.help()
