@@ -17,7 +17,7 @@ git win下载地址[https://git-scm.com/download/win](https://git-scm.com/downlo
 
 > 新增模板 longrise add
 
-> 删除模板 longrise add <name>
+> 删除模板 longrise delete <name>
 
 > 使用么个模板 longrise use <template> (longrise use React-BBW)
 `
