@@ -1,6 +1,6 @@
 {
   "name": "longrise-cli",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "longrise脚手架编写",
   "main": "index.js",
   "scripts": {
