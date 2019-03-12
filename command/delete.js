@@ -2,6 +2,7 @@ const templates = require('../templates').project;
 const fs = require('fs');
 const chalk = require('chalk');
 const co = require('co');
+const path = require('path');
 
 function deleteTemplate(name)  {
     co(function *() {
@@ -14,7 +15,7 @@ function deleteTemplate(name)  {
         const jsonObj = {
             project: newTemplates
         };
-        fs.writeFile('./templates.json',JSON.stringify(jsonObj),function(err){  //写入同目录下的Data.txt文件
+        fs.writeFile(path.join(__dirname, '../templates.json'),JSON.stringify(jsonObj),function(err){  //写入同目录下的Data.txt文件
             if(err) throw err;
             console.log(chalk.green('template delete success'));
             process.exit()

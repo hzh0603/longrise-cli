@@ -2,6 +2,7 @@ const prompt = require('co-prompt');
 const co = require('co');
 const fs = require('fs');
 const chalk = require('chalk');
+const path = require('path');
 
 const templates = require('../templates').project;
 function addTemplate() {
@@ -16,7 +17,7 @@ function addTemplate() {
         let desc = yield  prompt('Project  description: ');
         let url = yield  prompt('Project Git url: ');
 
-        fs.readFile('./templates.json', (err, data) => {
+        fs.readFile(path.join(__dirname, '../templates.json'), (err, data) => {
             if(err){throw err;}
             let jsonObj = JSON.parse(data);//获取json文件对象
             jsonObj.project.push({
@@ -24,7 +25,7 @@ function addTemplate() {
                 project_des: desc,
                 project_git: url
             });
-            fs.writeFile('./templates.json',JSON.stringify(jsonObj),function(err){  //写入同目录下的Data.txt文件
+            fs.writeFile(path.join(__dirname, '../templates.json'),JSON.stringify(jsonObj),function(err){  //写入同目录下的Data.txt文件
                 if(err) throw err;
                 console.log(chalk.green('template add success'));
                 process.exit()
